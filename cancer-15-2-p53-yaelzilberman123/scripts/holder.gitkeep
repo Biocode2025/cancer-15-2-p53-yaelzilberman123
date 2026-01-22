@@ -1,0 +1,19 @@
+def  Read_dict():
+  with open("codon_AA.txt","r") as c: # open file
+    for line in c: #run in every line in the file
+        ll=line.rstrip("\n")
+        l=str(ll)
+        codon=l[0:3] #the first three is the codon
+        name=l[4]  
+        RNA_codon_table[codon]=name #the key is the codon and the value is the name
+
+def DNA_RNA_Cod(dna):
+    return dna.replace("T", "U")
+  
+def RNA_prot (rna):
+  result=""
+  for i in range(0,len(rna),3): # run  in string in  leaps of three
+    codon=rna[i:i+3]  #  connect three nucleotides to  make codon
+    if codon in RNA_codon_table: #check if the codon is exist
+      result.append(RNA_codon_table[codon]) 
+  return result
